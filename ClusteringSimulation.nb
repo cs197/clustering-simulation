@@ -1,0 +1,172 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5433,        164]
+NotebookOptionsPosition[      4744,        135]
+NotebookOutlinePosition[      5099,        151]
+CellTagsIndexPosition[      5056,        148]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"updateInterval", "=", "1.0"}]], "Input",
+ CellChangeTimes->{{3.680554513169273*^9, 3.6805545162949038`*^9}, {
+  3.680555617820176*^9, 3.6805556218495073`*^9}}],
+
+Cell[BoxData["1.`"], "Output",
+ CellChangeTimes->{
+  3.680554517652348*^9, 3.680554970703679*^9, {3.680555418959774*^9, 
+   3.680555467334682*^9}, 3.680555539301531*^9, 3.680555663399509*^9, 
+   3.6805557880970383`*^9, 3.6805558925319653`*^9, 3.680556093351549*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"steps", "=", "700000"}]], "Input",
+ CellChangeTimes->{{3.680554438896204*^9, 3.680554440999096*^9}, {
+  3.680555416822051*^9, 3.680555465633183*^9}, {3.680555655224381*^9, 
+  3.680555657283454*^9}, {3.680555867620885*^9, 3.6805558813587837`*^9}}],
+
+Cell[BoxData["700000"], "Output",
+ CellChangeTimes->{3.68055566343909*^9, 3.680555791946306*^9, 
+  3.680555895956491*^9, 3.6805560934195557`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"initialize", "[", "]"}], ":=", 
+  RowBox[{"{", "}"}]}]], "Input",
+ CellChangeTimes->{{3.680554885620805*^9, 3.6805549298825293`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"update", "[", "configuration_", "]"}], ":=", 
+  RowBox[{"{", "}"}]}]], "Input",
+ CellChangeTimes->{{3.680554885620805*^9, 3.680554954479945*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"represent", "[", "configuration_", "]"}], ":=", 
+  RowBox[{"{", "}"}]}]], "Input",
+ CellChangeTimes->{{3.6805557589973383`*^9, 3.6805557794310417`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"draw", "[", 
+   RowBox[{"representation_", ",", "t_"}], "]"}], ":=", "t"}]], "Input",
+ CellChangeTimes->{{3.680554885620805*^9, 3.68055496526864*^9}, {
+  3.680555739853765*^9, 3.68055574246349*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t", "=", 
+      RowBox[{"-", "1"}]}], ",", "configuration"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", 
+    RowBox[{"Refresh", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"t", "<", "0"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"configuration", "=", 
+           RowBox[{"initialize", "[", "]"}]}], ";", 
+          RowBox[{"t", "=", "0"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Do", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"update", "[", "configuration", "]"}], ";", 
+            RowBox[{"t", "=", 
+             RowBox[{"t", "+", "1"}]}]}], ",", "steps"}], "]"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", 
+       RowBox[{"representation", "=", 
+        RowBox[{"represent", "[", "configuration", "]"}]}], ";", 
+       RowBox[{"draw", "[", 
+        RowBox[{"representation", ",", "t"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"TrackedSymbols", "\[Rule]", 
+       RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"UpdateInterval", "\[Rule]", "updateInterval"}]}], "]"}], 
+    "]"}]}], "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.680554172744178*^9, 3.680554260998535*^9}, {
+  3.6805542998918743`*^9, 3.680554314694853*^9}, {3.6805543896465483`*^9, 
+  3.680554436610601*^9}, {3.680554521707082*^9, 3.680554626162971*^9}, {
+  3.68055486539363*^9, 3.680554865740766*^9}, {3.6805555233578053`*^9, 
+  3.680555532271282*^9}}],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`t$$ = 
+  28000000, $CellContext`configuration$$ = {}}, 
+  DynamicBox[ToBoxes[
+    Refresh[
+    If[$CellContext`t$$ < 
+       0, $CellContext`configuration$$ = $CellContext`initialize[]; \
+$CellContext`t$$ = 0, 
+       Do[$CellContext`update[$CellContext`configuration$$]; $CellContext`t$$ = \
+$CellContext`t$$ + 
+          1, $CellContext`steps]]; $CellContext`representation = \
+$CellContext`represent[$CellContext`configuration$$]; \
+$CellContext`draw[$CellContext`representation, $CellContext`t$$], 
+     TrackedSymbols -> {}, UpdateInterval -> $CellContext`updateInterval], 
+    StandardForm],
+   ImageSizeCache->{67., {1., 9.}}],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{{3.68055609057415*^9, 3.680556093491417*^9}}]
+}, Open  ]]
+},
+WindowSize->{808, 931},
+WindowMargins->{{Automatic, 184}, {Automatic, 44}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 183, 3, 32, "Input"],
+Cell[766, 27, 265, 4, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1068, 36, 270, 4, 32, "Input"],
+Cell[1341, 42, 145, 2, 32, "Output"]
+}, Open  ]],
+Cell[1501, 47, 168, 4, 32, "Input"],
+Cell[1672, 53, 180, 4, 32, "Input"],
+Cell[1855, 59, 187, 4, 32, "Input"],
+Cell[2045, 65, 233, 5, 32, "Input"],
+Cell[CellGroupData[{
+Cell[2303, 74, 1638, 39, 201, "Input"],
+Cell[3944, 115, 784, 17, 32, "Output"]
+}, Open  ]]
+}
+]
+*)
+
