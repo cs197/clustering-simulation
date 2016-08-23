@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     19072,        475]
-NotebookOptionsPosition[     17479,        417]
-NotebookOutlinePosition[     17834,        433]
-CellTagsIndexPosition[     17791,        430]
+NotebookDataLength[     19321,        482]
+NotebookOptionsPosition[     17690,        423]
+NotebookOutlinePosition[     18045,        439]
+CellTagsIndexPosition[     18002,        436]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -265,6 +265,12 @@ Cell["Running", "Chapter",
  CellChangeTimes->{{3.680783286758191*^9, 3.680783334940096*^9}, {
   3.68078346573407*^9, 3.680783509303279*^9}}],
 
+Cell["\<\
+The dynamic module will not run until the entire notebook has been evaluated. \
+Sigh.\
+\>", "Text",
+ CellChangeTimes->{{3.6809092276326714`*^9, 3.680909243013692*^9}}],
+
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -403,7 +409,7 @@ $CellContext`t$$ +
 $CellContext`draw[$CellContext`configuration$$, $CellContext`t$$], 
      TrackedSymbols -> {}, UpdateInterval -> $CellContext`updateInterval], 
     StandardForm],
-   ImageSizeCache->{450., {221., 228.}}],
+   ImageSizeCache->{600.5, {1278.4361686706543`, 15.989893913269043`}}],
   DynamicModuleValues:>{}]], "Output",
  CellChangeTimes->{
   3.680636174382432*^9, 3.6807857185255203`*^9, 3.6807857549803534`*^9, 
@@ -471,9 +477,10 @@ Cell[8458, 243, 783, 15, 66, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[9278, 263, 140, 2, 81, "Chapter"],
+Cell[9421, 267, 177, 4, 37, "Text"],
 Cell[CellGroupData[{
-Cell[9443, 269, 1675, 39, 274, "Input"],
-Cell[11121, 310, 6318, 102, 467, "Output"]
+Cell[9623, 275, 1675, 39, 274, "Input"],
+Cell[11301, 316, 6349, 102, 1314, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
