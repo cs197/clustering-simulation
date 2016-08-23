@@ -1,10 +1,11 @@
 # clustering-simulation
 
-Demonstrate the K-Means Clustering Method described in the "Unsupervised Learning" chapter (Chapter 10)
-of "An Introduction to Statistical Learning" by James, Witten, Hastie and Tibshirani.
+K-Means-Clustering.nb simulates a clustering strategy described in the "Unsupervised Learning" chapter
+(Chapter 10) of "An Introduction to Statistical Learning" by James, Witten, Hastie and Tibshirani.
 
-Additional References
+In Dynamic-Clustering.nb the number of clusters emerges as part of the simulation.
 
-http://demonstrations.wolfram.com/VoterModel/
+Additional References:
 
-http://demonstrations.wolfram.com/CollidingGalaxies/
+* http://demonstrations.wolfram.com/VoterModel/
+* http://demonstrations.wolfram.com/CollidingGalaxies/
