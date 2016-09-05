@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     50216,       1055]
-NotebookOptionsPosition[     47884,        973]
-NotebookOutlinePosition[     48240,        989]
-CellTagsIndexPosition[     48197,        986]
+NotebookDataLength[     98582,       1785]
+NotebookOptionsPosition[     96175,       1701]
+NotebookOutlinePosition[     96531,       1717]
+CellTagsIndexPosition[     96488,       1714]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -77,16 +77,14 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"clusterCount", "=", "4"}], ";"}], " ", 
+  RowBox[{"tolerance", "=", "0.5"}], ";", " ", 
   RowBox[{"(*", 
    RowBox[{
-    RowBox[{"--", " ", "The"}], " ", "K", " ", "in", " ", 
-    "\"\<K-Means Clustering.\>\""}], " ", "*)"}]}]], "Input",
- CellChangeTimes->{{3.680784201614644*^9, 3.680784209986434*^9}, {
-   3.6809623740822487`*^9, 3.680962412658683*^9}, 3.6809626813189383`*^9, {
-   3.680962913283239*^9, 3.680962913596648*^9}, {3.680970733074024*^9, 
-   3.6809707332187023`*^9}}],
+    RowBox[{"--", " ", "An"}], " ", "actor", " ", "would", " ", "rather", " ",
+     "start", " ", "their", " ", "own", " ", "cluster", " ", "if", " ", 
+    "this", " ", "distance", " ", "is", " ", 
+    RowBox[{"exceeded", "."}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.680978849133665*^9, 3.680978932295363*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -138,16 +136,761 @@ Cell[BoxData[
   3.680962957325419*^9}, {3.6809630549300613`*^9, 3.680963055638568*^9}, {
   3.680963129777403*^9, 3.680963149755527*^9}}],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{
   RowBox[{"clusterColors", "=", 
    RowBox[{"Take", "[", 
     RowBox[{
      RowBox[{"ColorData", "[", 
-      RowBox[{"1", ",", "\"\<ColorList\>\""}], "]"}], ",", "clusterCount"}], 
+      RowBox[{"1", ",", "\"\<ColorList\>\""}], "]"}], ",", "actorCount"}], 
     "]"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.680906987665717*^9, 3.6809070748290873`*^9}, 
-   3.680908016869857*^9}]
+   3.680908016869857*^9, 3.680981305763481*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Take","take",
+   "\"Cannot take positions \\!\\(\\*RowBox[{\\\"1\\\"}]\\) through \
+\\!\\(\\*RowBox[{\\\"500\\\"}]\\) in \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[\
+GrayLevel[0], RectangleBox[List[0, 0]]], List[GrayLevel[0], \
+RectangleBox[List[1, -1]]], List[RGBColor[0.24720000000000014`, 0.24`, 0.6`], \
+RectangleBox[List[0, -1], List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, \
+True], Rule[FrameStyle, RGBColor[0.1648000000000001`, 0.16`, 0.4`]], \
+Rule[FrameTicks, None], Rule[PlotRangePadding, None], Rule[ImageSize, \
+Dynamic[List[Automatic, Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.24720000000000014, 0.24, 0.6]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.24720000000000014`, 0.24`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24720000000000014`, \
+0.24`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.24`, 0.4428931686004542`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.16`, 0.2952621124003028`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, 0.24, \
+0.4428931686004542]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, 0.24`, \
+0.4428931686004542`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, 0.24`, \
+0.4428931686004542`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.5470136627990908`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.36467577519939387`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, \
+0.5470136627990908, 0.24]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, \
+0.5470136627990908`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, \
+0.5470136627990908`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.6`, 0.33692049419863584`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.4`, 0.22461366279909056`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, 0.6, \
+0.33692049419863584]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, 0.6`, \
+0.33692049419863584`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, 0.6`, \
+0.33692049419863584`], Rule[Editable, False], Rule[Selectable, False]], \\\",\
+\\\", InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[\
+0], RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.3531726744018182`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.23544844960121214`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, \
+0.3531726744018182, 0.6]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, \
+0.3531726744018182`, 0.6`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, \
+0.3531726744018182`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.24`, 0.5632658430022722`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.16`, 0.37551056200151484`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, 0.24, \
+0.5632658430022722]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, 0.24`, \
+0.5632658430022722`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, 0.24`, \
+0.5632658430022722`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.42664098839727194`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.2844273255981813`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, \
+0.42664098839727194, 0.24]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, \
+0.42664098839727194`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, \
+0.42664098839727194`, 0.24`], Rule[Editable, False], Rule[Selectable, \
+False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.2634521802031821`, 0.6`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.1756347868021214`, 0.4`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.2634521802031821, 0.6, 0.24]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.2634521802031821`, 0.6`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.2634521802031821`, \
+0.6`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.47354534880363613`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.3156968992024241`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, \
+0.47354534880363613, 0.6]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, \
+0.47354534880363613`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, \
+0.47354534880363613`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.5163614825959097`, 0.24`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.3442409883972732`, 0.16`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.5163614825959097, 0.24, 0.6]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.5163614825959097`, 0.24`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.5163614825959097`, \
+0.24`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.3062683139954558`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.20417887599697054`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, \
+0.3062683139954558, 0.24]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, \
+0.3062683139954558`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, \
+0.3062683139954558`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.3838248546049982`, 0.6`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.25588323640333216`, 0.4`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.3838248546049982, 0.6, 0.24]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.3838248546049982`, 0.6`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.3838248546049982`, \
+0.6`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.5939180232054561`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.3959453488036374`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, \
+0.5939180232054561, 0.6]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, \
+0.5939180232054561`, 0.6`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, \
+0.5939180232054561`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.39598880819409377`, 0.24`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.26399253879606255`, 0.16`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.39598880819409377, 0.24, 0.6]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.39598880819409377`, 0.24`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.39598880819409377`, \
+0.24`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.24`, 0.2941043604063603`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.16`, 0.1960695736042402`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, 0.24, \
+0.2941043604063603]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, 0.24`, \
+0.2941043604063603`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, 0.24`, \
+0.2941043604063603`], Rule[Editable, False], Rule[Selectable, False]]}], \
+\\\"}\\\"}]\\).\"",2,2,1,30014264047386959760,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.680981306880023*^9}],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Take","take",
+   "\"Cannot take positions \\!\\(\\*RowBox[{\\\"1\\\"}]\\) through \
+\\!\\(\\*RowBox[{\\\"500\\\"}]\\) in \\!\\(\\*RowBox[{\\\"{\\\", \
+RowBox[{InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[\
+GrayLevel[0], RectangleBox[List[0, 0]]], List[GrayLevel[0], \
+RectangleBox[List[1, -1]]], List[RGBColor[0.24720000000000014`, 0.24`, 0.6`], \
+RectangleBox[List[0, -1], List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, \
+True], Rule[FrameStyle, RGBColor[0.1648000000000001`, 0.16`, 0.4`]], \
+Rule[FrameTicks, None], Rule[PlotRangePadding, None], Rule[ImageSize, \
+Dynamic[List[Automatic, Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.24720000000000014, 0.24, 0.6]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.24720000000000014`, 0.24`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24720000000000014`, \
+0.24`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.24`, 0.4428931686004542`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.16`, 0.2952621124003028`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, 0.24, \
+0.4428931686004542]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, 0.24`, \
+0.4428931686004542`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, 0.24`, \
+0.4428931686004542`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.5470136627990908`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.36467577519939387`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, \
+0.5470136627990908, 0.24]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, \
+0.5470136627990908`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, \
+0.5470136627990908`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.6`, 0.33692049419863584`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.4`, 0.22461366279909056`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, 0.6, \
+0.33692049419863584]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, 0.6`, \
+0.33692049419863584`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, 0.6`, \
+0.33692049419863584`], Rule[Editable, False], Rule[Selectable, False]], \\\",\
+\\\", InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[\
+0], RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.3531726744018182`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.23544844960121214`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, \
+0.3531726744018182, 0.6]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, \
+0.3531726744018182`, 0.6`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, \
+0.3531726744018182`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.24`, 0.5632658430022722`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.16`, 0.37551056200151484`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, 0.24, \
+0.5632658430022722]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, 0.24`, \
+0.5632658430022722`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, 0.24`, \
+0.5632658430022722`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.42664098839727194`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.2844273255981813`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, \
+0.42664098839727194, 0.24]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, \
+0.42664098839727194`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, \
+0.42664098839727194`, 0.24`], Rule[Editable, False], Rule[Selectable, \
+False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.2634521802031821`, 0.6`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.1756347868021214`, 0.4`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.2634521802031821, 0.6, 0.24]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.2634521802031821`, 0.6`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.2634521802031821`, \
+0.6`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.47354534880363613`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.3156968992024241`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, \
+0.47354534880363613, 0.6]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, \
+0.47354534880363613`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, \
+0.47354534880363613`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.5163614825959097`, 0.24`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.3442409883972732`, 0.16`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.5163614825959097, 0.24, 0.6]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.5163614825959097`, 0.24`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.5163614825959097`, \
+0.24`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.3062683139954558`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.20417887599697054`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, \
+0.3062683139954558, 0.24]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, \
+0.3062683139954558`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, \
+0.3062683139954558`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.3838248546049982`, 0.6`, 0.24`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.25588323640333216`, 0.4`, 0.16`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.3838248546049982, 0.6, 0.24]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.3838248546049982`, 0.6`, 0.24`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.3838248546049982`, \
+0.6`, 0.24`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.24`, 0.5939180232054561`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.16`, 0.3959453488036374`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.24, \
+0.5939180232054561, 0.6]\\\"], Rule[Appearance, None], Rule[BaseStyle, \
+List[]], Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.24`, \
+0.5939180232054561`, 0.6`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.24`, \
+0.5939180232054561`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \
+\\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.39598880819409377`, 0.24`, 0.6`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.26399253879606255`, 0.16`, 0.4`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \
+\\\"RGBColor[0.39598880819409377, 0.24, 0.6]\\\"], Rule[Appearance, None], \
+Rule[BaseStyle, List[]], Rule[BaselinePosition, Baseline], \
+Rule[DefaultBaseStyle, List[]], RuleDelayed[ButtonFunction, \
+With[List[Set[Typeset`box$, EvaluationBox[]]], If[Not[AbsoluteCurrentValue[\\\
+\"Deployed\\\"]], CompoundExpression[SelectionMove[Typeset`box$, All, \
+Expression], Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, \
+RGBColor[0.39598880819409377`, 0.24`, 0.6`]], \
+Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, True], \
+MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.39598880819409377`, \
+0.24`, 0.6`], Rule[Editable, False], Rule[Selectable, False]], \\\",\\\", \
+InterpretationBox[ButtonBox[TooltipBox[GraphicsBox[List[List[GrayLevel[0], \
+RectangleBox[List[0, 0]]], List[GrayLevel[0], RectangleBox[List[1, -1]]], \
+List[RGBColor[0.6`, 0.24`, 0.2941043604063603`], RectangleBox[List[0, -1], \
+List[2, 1]]]], Rule[AspectRatio, 1], Rule[Frame, True], Rule[FrameStyle, \
+RGBColor[0.4`, 0.16`, 0.1960695736042402`]], Rule[FrameTicks, None], \
+Rule[PlotRangePadding, None], Rule[ImageSize, Dynamic[List[Automatic, \
+Times[1.35`, CurrentValue[\\\"FontCapHeight\\\"], \
+Power[AbsoluteCurrentValue[Magnification], -1]]]]]], \\\"RGBColor[0.6, 0.24, \
+0.2941043604063603]\\\"], Rule[Appearance, None], Rule[BaseStyle, List[]], \
+Rule[BaselinePosition, Baseline], Rule[DefaultBaseStyle, List[]], \
+RuleDelayed[ButtonFunction, With[List[Set[Typeset`box$, EvaluationBox[]]], \
+If[Not[AbsoluteCurrentValue[\\\"Deployed\\\"]], \
+CompoundExpression[SelectionMove[Typeset`box$, All, Expression], \
+Set[FrontEnd`Private`$ColorSelectorInitialAlpha, 1], \
+Set[FrontEnd`Private`$ColorSelectorInitialColor, RGBColor[0.6`, 0.24`, \
+0.2941043604063603`]], Set[FrontEnd`Private`$ColorSelectorUseMakeBoxes, \
+True], MathLink`CallFrontEnd[FrontEnd`AttachCell[Typeset`box$, \
+FrontEndResource[\\\"RGBColorValueSelector\\\"], List[0, List[Left, Bottom]], \
+List[Left, Top], Rule[\\\"ClosingActions\\\", \
+List[\\\"SelectionDeparture\\\", \\\"ParentChanged\\\", \
+\\\"EvaluatorQuit\\\"]]]]]]]], Rule[BaseStyle, Inherited], Rule[Evaluator, \
+Automatic], Rule[Method, \\\"Preemptive\\\"]], RGBColor[0.6`, 0.24`, \
+0.2941043604063603`], Rule[Editable, False], Rule[Selectable, False]]}], \
+\\\"}\\\"}]\\).\"",2,2,2,30014264047386959760,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.680981306908207*^9}]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -428,36 +1171,18 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"actorColor", "[", "actor_", "]"}], ":=", 
-  RowBox[{"clusterColors", "[", 
-   RowBox[{"[", 
-    RowBox[{"actorAllegiance", "[", "actor", "]"}], "]"}], "]"}]}]], "Input",
- CellChangeTimes->{{3.680907152298757*^9, 3.6809071674949503`*^9}, {
-  3.68090720089774*^9, 3.6809072190992527`*^9}, {3.6809079794075336`*^9, 
-  3.6809079889569483`*^9}}],
-
-Cell[BoxData[
- RowBox[{
   RowBox[{"sparseArrayEntry", "[", "actor_", "]"}], ":=", 
   RowBox[{
    RowBox[{"actorPosition", "[", "actor", "]"}], "\[Rule]", 
-   RowBox[{"actorColor", "[", "actor", "]"}]}]}]], "Input",
+   RowBox[{"actorAllegiance", "[", "actor", "]"}]}]}]], "Input",
  CellChangeTimes->{{3.680785576930182*^9, 3.680785579323176*^9}, {
    3.680785652370883*^9, 3.680785711026805*^9}, 3.680785984594105*^9, {
    3.6807866863790207`*^9, 3.680786687997428*^9}, {3.680786799036271*^9, 
    3.6807868006897287`*^9}, {3.68090622775427*^9, 3.6809062379750013`*^9}, {
    3.680907104901775*^9, 3.680907131596416*^9}, {3.680907233869895*^9, 
    3.680907244523548*^9}, {3.680907781113888*^9, 3.680907784421082*^9}, {
-   3.680907895831297*^9, 3.680907899137353*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"represent", "[", "actors_", "]"}], ":=", 
-  RowBox[{"Map", "[", 
-   RowBox[{"sparseArrayEntry", ",", "actors"}], "]"}]}]], "Input",
- CellChangeTimes->{{3.680785428553822*^9, 3.680785566003766*^9}, {
-   3.680785992658849*^9, 3.6807860013663187`*^9}, 3.680907902594345*^9, {
-   3.680911253804253*^9, 3.6809112555480347`*^9}}],
+   3.680907895831297*^9, 3.680907899137353*^9}, {3.680980165249317*^9, 
+   3.680980167823956*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -465,7 +1190,9 @@ Cell[BoxData[
    RowBox[{"actors_", ",", "t_"}], "]"}], ":=", 
   RowBox[{"ArrayPlot", "[", 
    RowBox[{"SparseArray", "[", 
-    RowBox[{"represent", "[", "actors", "]"}], "]"}], "]"}]}]], "Input",
+    RowBox[{"Map", "[", 
+     RowBox[{"sparseArrayEntry", ",", "actors"}], "]"}], "]"}], 
+   "]"}]}]], "Input",
  CellChangeTimes->{{3.680554885620805*^9, 3.68055496526864*^9}, {
    3.680555739853765*^9, 3.68055574246349*^9}, {3.680634306880855*^9, 
    3.680634321089467*^9}, {3.680634753876412*^9, 3.6806347948036203`*^9}, {
@@ -473,7 +1200,8 @@ Cell[BoxData[
    3.6807852668213463`*^9}, {3.680785399145192*^9, 3.680785424275879*^9}, {
    3.680785504400091*^9, 3.6807855183605957`*^9}, 3.680785752765932*^9, {
    3.680786082006431*^9, 3.680786087518201*^9}, {3.6807866689079523`*^9, 
-   3.68078667287885*^9}, {3.680911256976858*^9, 3.680911259013035*^9}}]
+   3.68078667287885*^9}, {3.680911256976858*^9, 3.680911259013035*^9}, {
+   3.680980065428247*^9, 3.6809800656976223`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -948,7 +1676,7 @@ $CellContext`t$$ = $CellContext`t$$ +
           1, $CellContext`steps]]; $CellContext`draw[$CellContext`actors$$, \
 $CellContext`t$$], TrackedSymbols -> {}, 
      UpdateInterval -> $CellContext`updateInterval], StandardForm],
-   ImageSizeCache->{450., {221., 228.}}],
+   ImageSizeCache->{1034.5, {4242.436168670654, 15.989893913269043`}}],
   DynamicModuleValues:>{}]], "Output",
  CellChangeTimes->{
   3.680636174382432*^9, 3.6807857185255203`*^9, 3.6807857549803534`*^9, 
@@ -972,7 +1700,7 @@ $CellContext`t$$], TrackedSymbols -> {},
 }, Open  ]]
 },
 WindowSize->{1183, 1296},
-WindowMargins->{{Automatic, 321}, {Automatic, 0}},
+WindowMargins->{{Automatic, 345}, {Automatic, 0}},
 FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
 2016)",
 StyleDefinitions->"Default.nb"
@@ -996,64 +1724,66 @@ Cell[1252, 39, 105, 1, 81, "Chapter"],
 Cell[1360, 42, 999, 18, 39, "Input"],
 Cell[2362, 62, 464, 8, 39, "Input"],
 Cell[2829, 72, 145, 3, 39, "Input"],
-Cell[2977, 77, 480, 11, 39, "Input"],
-Cell[3460, 90, 487, 12, 39, "Input"]
+Cell[2977, 77, 422, 9, 66, "Input"],
+Cell[3402, 88, 487, 12, 39, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3984, 107, 151, 2, 81, "Chapter"],
-Cell[4138, 111, 471, 11, 39, "Input"],
-Cell[4612, 124, 649, 14, 66, "Input"],
-Cell[5264, 140, 328, 9, 39, "Input"]
+Cell[3926, 105, 151, 2, 81, "Chapter"],
+Cell[4080, 109, 471, 11, 39, "Input"],
+Cell[4554, 122, 649, 14, 66, "Input"],
+Cell[CellGroupData[{
+Cell[5228, 140, 348, 9, 39, "Input"],
+Cell[5579, 151, 24426, 369, 29, "Message"],
+Cell[30008, 522, 24426, 369, 29, "Message"]
+}, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5629, 154, 99, 1, 81, "Chapter"],
-Cell[5731, 157, 809, 17, 39, "Input"],
-Cell[6543, 176, 563, 13, 39, "Input"],
-Cell[7109, 191, 482, 12, 39, "Input"]
+Cell[54483, 897, 99, 1, 81, "Chapter"],
+Cell[54585, 900, 809, 17, 39, "Input"],
+Cell[55397, 919, 563, 13, 39, "Input"],
+Cell[55963, 934, 482, 12, 39, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7628, 208, 142, 2, 81, "Chapter"],
+Cell[56482, 951, 142, 2, 81, "Chapter"],
 Cell[CellGroupData[{
-Cell[7795, 214, 115, 1, 80, "Section"],
-Cell[7913, 217, 563, 12, 39, "Input"],
-Cell[8479, 231, 674, 18, 39, "Input"],
-Cell[9156, 251, 361, 10, 39, "Input"]
+Cell[56649, 957, 115, 1, 80, "Section"],
+Cell[56767, 960, 563, 12, 39, "Input"],
+Cell[57333, 974, 674, 18, 39, "Input"],
+Cell[58010, 994, 361, 10, 39, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9554, 266, 105, 1, 80, "Section"],
-Cell[9662, 269, 673, 16, 66, "Input"],
-Cell[10338, 287, 648, 17, 66, "Input"],
-Cell[10989, 306, 1396, 30, 66, "Input"],
+Cell[58408, 1009, 105, 1, 80, "Section"],
+Cell[58516, 1012, 673, 16, 66, "Input"],
+Cell[59192, 1030, 648, 17, 66, "Input"],
+Cell[59843, 1049, 1396, 30, 66, "Input"],
 Cell[CellGroupData[{
-Cell[12410, 340, 164, 4, 39, "Input"],
-Cell[12577, 346, 234, 5, 39, "Output"]
+Cell[61264, 1083, 164, 4, 39, "Input"],
+Cell[61431, 1089, 234, 5, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12848, 356, 182, 4, 39, "Input"],
-Cell[13033, 362, 236, 5, 39, "Output"]
+Cell[61702, 1099, 182, 4, 39, "Input"],
+Cell[61887, 1105, 236, 5, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13306, 372, 69, 1, 39, "Input"],
-Cell[13378, 375, 235, 5, 39, "Output"]
+Cell[62160, 1115, 69, 1, 39, "Input"],
+Cell[62232, 1118, 235, 5, 39, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13674, 387, 142, 2, 81, "Chapter"],
-Cell[13819, 391, 519, 12, 63, "Input"],
-Cell[14341, 405, 478, 13, 39, "Input"],
-Cell[14822, 420, 247, 6, 39, "Input"],
-Cell[15072, 428, 375, 8, 39, "Input"],
-Cell[15450, 438, 699, 12, 39, "Input"],
-Cell[16152, 452, 358, 7, 39, "Input"],
-Cell[16513, 461, 813, 14, 39, "Input"]
+Cell[62528, 1130, 142, 2, 81, "Chapter"],
+Cell[62673, 1134, 519, 12, 63, "Input"],
+Cell[63195, 1148, 478, 13, 39, "Input"],
+Cell[63676, 1163, 247, 6, 39, "Input"],
+Cell[63926, 1171, 754, 13, 39, "Input"],
+Cell[64683, 1186, 904, 17, 39, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17363, 480, 140, 2, 81, "Chapter"],
-Cell[17506, 484, 177, 4, 37, "Text"],
+Cell[65624, 1208, 140, 2, 81, "Chapter"],
+Cell[65767, 1212, 177, 4, 37, "Text"],
 Cell[CellGroupData[{
-Cell[17708, 492, 1734, 39, 248, "Input"],
-Cell[19445, 533, 28399, 435, 467, "Output"]
+Cell[65969, 1220, 1734, 39, 248, "Input"],
+Cell[67706, 1261, 28429, 435, 4278, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
